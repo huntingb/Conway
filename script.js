@@ -3,6 +3,14 @@ const gridContainer = document.getElementById("grid-container");
 const startBtn = document.getElementById("start-btn");
 const pauseBtn = document.getElementById("pause-btn");
 const resetBtn = document.getElementById("reset-btn");
+const speedSlider = document.getElementById("speed-slider");
+
+// Declare a variable that will be used later to store our setInterval function
+let update;
+// Initialize a variable to keep track of if the game is running or not
+let running = false;
+// Initialize a variable for the speed of the animation in ms per frame (500 by default)
+let speed = speedSlider.value;
 
 // Define a function to display a new table on the DOM
 function displayTable(grid) {
@@ -13,9 +21,9 @@ function displayTable(grid) {
     // Display new table
     let table = document.createElement("table");
 
-    for (let i = 0; i < 80; i++) {
+    for (let i = 0; i < grid.length; i++) {
         let row = document.createElement("tr");
-        for (let j = 0; j < 80; j++) {
+        for (let j = 0; j < grid[i].length; j++) {
             let cell = document.createElement("td");
             // cell.style.backgroundColor = (grid[i][j]) ? "#333" : "white"; 
             if (grid[i][j]) {
@@ -89,9 +97,9 @@ function createNextGrid(grid) {
     let newGrid = [];
     
     // Nested loop to iterate through each cell
-    for (let i = 0; i < 80; i++) {
+    for (let i = 0; i < grid.length; i++) {
       let row = [];
-      for (let j = 0; j < 80; j++) {
+      for (let j = 0; j < grid[i].length; j++) {
         // Live neighbors count for the curret cell
         let liveNeighbors = getLiveNeighbors(grid, i, j);
         
@@ -124,12 +132,13 @@ function updateGrid() {
     displayTable(currentGrid);
 }
 
-// Button event listeners
+// Controls event listeners
 startBtn.addEventListener("click", () => {
-    update = setInterval(updateGrid, 100);
+    update = setInterval(updateGrid, speed);
     startBtn.disabled = true;
     pauseBtn.disabled = false;
     resetBtn.disabled = false;
+    running = true;
 });
 
 pauseBtn.addEventListener("click", () => {
@@ -137,6 +146,7 @@ pauseBtn.addEventListener("click", () => {
     startBtn.disabled = false;
     pauseBtn.disabled = true;
     resetBtn.disabled = false;
+    running = false;
 });
 
 resetBtn.addEventListener("click", () => {
@@ -146,10 +156,16 @@ resetBtn.addEventListener("click", () => {
     startBtn.disabled = false;
     pauseBtn.disabled = true;
     resetBtn.disabled = true;
+    running = false;
 });
 
-// This has to be initialized in the global scope to work
-let update;
+speedSlider.addEventListener("change", () => {
+    speed = speedSlider.value;
+    if (running) {
+        clearInterval(update);
+        update = setInterval(updateGrid, speed);
+    }
+});
 
 // Call displayTable once to initialize UI
 let currentGrid = createRandomGrid();
