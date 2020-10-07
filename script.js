@@ -167,6 +167,27 @@ speedSlider.addEventListener("change", () => {
     }
 });
 
+// Testing click to add squares
+gridContainer.addEventListener("click", (e) => {
+    clearInterval(update);
+
+    let cell = e.target;
+    let j = Array.from(cell.parentNode.children).indexOf(cell);
+    let row = e.target.parentNode;
+    let i = Array.from(row.parentNode.children).indexOf(row);
+    // currentGrid[i][j] = (cell.classList.contains("dead")) ? true : false;
+    if (cell.classList.contains("dead")) {
+        currentGrid[i][j] = true;
+        cell.classList.remove("dead");
+        cell.classList.add("live");
+    }
+    updateGrid();
+
+    if(running) {
+        update = setInterval(updateGrid, speed);
+    }   
+});
+
 // Call displayTable once to initialize UI
 let currentGrid = createRandomGrid();
 displayTable(currentGrid);

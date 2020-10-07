@@ -1,3 +1,4 @@
+/* General elements*/
 html {
     font-size: 13px;
     font-family: Arial, Helvetica, sans-serif;
@@ -5,6 +6,27 @@ html {
 
 body {
     margin: 0 auto;
+}
+
+p {
+    text-align: center;
+}
+
+main p {
+    position: relative;
+    bottom: 7px;
+}
+
+a:link {
+    color: #349cbf;
+}
+
+a:visited, a:hover {
+    color: #40c2ed;
+}
+
+a:hover {
+    text-decoration: none;
 }
 
 header h1 {
@@ -59,4 +81,28 @@ td.live {
 
 td.dead {
     background-color: white;
+}
+
+td:hover {
+    background-color: #808080;
+}
+
+/* Footer */
+footer {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+footer * {
+    padding: 5px;
+    font-size: 12px;
+}
+
+footer img {
+    width: 12px;
+    height: 12px;
+    position: relative;
+    top: 6px;
 }
