@@ -15,6 +15,9 @@ p {
 main p {
     position: relative;
     bottom: 7px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    color: #4a4a4a;
 }
 
 a:link {
@@ -29,13 +32,24 @@ a:hover {
     text-decoration: none;
 }
 
+h1 {
+    text-align: center;
+}
+
 header h1 {
     color: white;
     background-color: #333;
     font-weight: lighter;
-    text-align: center;
     margin-top: 0;
     padding: 5px;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:disabled {
+    cursor: auto;
 }
 
 /* Main game UI elements */ 
@@ -51,7 +65,7 @@ header h1 {
 #grid-container {
     width: 100%;
     height: 90%;
-    border: 1px solid#333;
+    border: 1px solid#4a4a4a;
 }
 
 #controls {
@@ -105,4 +119,73 @@ footer img {
     height: 12px;
     position: relative;
     top: 6px;
+}
+
+/* Contact page */
+
+p.contact {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    width: 50%;
+    margin: 0 auto;
+    line-height: 1.6;
+    text-align: left;
+    color: #4a4a4a
+}
+
+form {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+    margin: 0 auto;
+    padding: 10px;
+    width: 33%;
+}
+
+form input {
+    outline: none;
+    border: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #4a4a4a;
+    animation-name: fade;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+
+textarea {
+    opacity: 0;
+    margin-top: 10px;
+    animation-name: fade;
+    animation-duration: 1s;
+    animation-delay: 2s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+button[type=submit] {
+    opacity: 0;
+    color: white;
+    background-color: #333;
+    padding: 10px;
+    font-size: 1.1rem; 
+    border: none;
+    border-radius: 20px;
+    width: 25%;
+    margin: 0 auto;
+    margin-top: 10px;
+    animation-name: fade;
+    animation-duration: 1s;
+    animation-delay: 3s;
+    animation-fill-mode: forwards;
 }
