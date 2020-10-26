@@ -189,3 +189,21 @@ button[type=submit] {
     animation-delay: 3s;
     animation-fill-mode: forwards;
 }
+
+/* About/Tribute page elements */ 
+#image {
+    width: 100vw;
+    height: auto;
+}
+
+/* Mobile media queries */
+@media (max-width: 770px) {
+    header h1 {
+        font-size: 1.6rem;
+    }
+
+    #title {
+        text-align: center;
+        color: black;
+    }
+}
