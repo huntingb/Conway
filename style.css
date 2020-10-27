@@ -191,9 +191,41 @@ button[type=submit] {
 }
 
 /* About/Tribute page elements */ 
-#image {
+#img-div {
     width: 100vw;
     height: auto;
+}
+#image {
+    width: 100%;
+    height: auto;
+}
+
+#tribute-info {
+    font-family: Roboto, sans-serif;
+}
+
+#tribute-info p {
+    text-align: justify;
+    text-indent: 1em;
+    line-height: 1.6;
+    margin: 10px;
+    text-justify: auto;
+}
+
+#tribute-info ol {
+    margin-bottom: 30px;
+}
+
+#tribute-info li {
+    color: #444242;
+    font-size: 1.1em;
+    font-family: Roboto;
+    margin-left: 100px;
+    line-height: 2;
+}
+
+main footer {
+    position: static;
 }
 
 /* Mobile media queries */
@@ -202,8 +234,43 @@ button[type=submit] {
         font-size: 1.6rem;
     }
 
+    p.contact {
+        width: 90%;
+        text-align: justify;
+    }
+
+    form {
+        position: relative;
+        width: 80%;
+    }
+
+    button[type=submit] {
+        width: 60px;
+    }
+
     #title {
         text-align: center;
         color: black;
+    }
+
+    #tribute-info li {
+        margin-left: 10px;
+        font-size: 0.95em;
+    }
+}
+
+@media (min-width: 770px) {
+    #title {
+        color: white;
+        font-size: 8rem;
+        position: absolute;
+        top: 30px;
+        left: 30px;
+        width: 40%;
+    }
+
+    #tribute-info {
+        width: 80%;
+        margin: auto;
     }
 }
